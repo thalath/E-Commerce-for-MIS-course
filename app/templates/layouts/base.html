@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=devive-width, initial-scale=1.0">
+    <title>{% block title %}User ManageMent {% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename="CSS/style.css") }}" />
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- header -->
+        <header class="header">
+
+        </header>
+
+
+        <!-- Aside -->
+        <aside class="sidebar" id="sidebar">
+            <nav class="navigation">
+                <ul>
+                    <li><a href="{{ url_for('employees.index') }}">Employees</a></li>
+                    <li><a href="{{ url_for('employees.card') }}">Employee Card</a></li>
+                    <li><a href="{{ url_for('jobs.index') }}">view position</a></li>
+                    <li><a href="{{ url_for('products.index')}}">Product List</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="content">
+            {% block content %}{% endblock %}
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p> Copyright &copy; Thalath, All right. Reserved.</p>
+        </footer>
+    </div>
+
+</body>
+
+</html>

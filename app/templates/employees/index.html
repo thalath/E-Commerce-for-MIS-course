@@ -1,0 +1,47 @@
+{% extends "layouts/base.html" %}
+{% block title %}Employees List{% endblock %}
+
+{% block content %}
+    {% if users %}
+        <table border="1" cellspacing="0" cellpadding="5">
+            <thead>
+                <tr>
+                    <th>PHOTO</th>
+                    <th>Employee ID</th>
+                    <th>Employee Name</th>
+                    <th>Gender</th>
+                    <th>Birth Date</th>
+                    <th>JOB_ID</th>
+                    <th>Address</th>
+                    <th>Telephone</th>
+                    <th>Salary</th>
+                    <th>Remarks</th>
+                    <th>Active</th>
+                </tr>
+            </thead>
+            {% for user in users %}
+            <tbody>
+                <tr>
+                    <td><img src="{{ url_for('employees.employee_photo', id=user.id) }}" alt="{{ user.name }}" width="100"></td>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.gender }}</td>
+                    <td>{{ user.birthdate }}</td>
+                    <td>{{ user.job_id }}</td>
+                    <td>{{ user.address }}</td>
+                    <td>{{ user.phone }}</td>
+                    <td>{{ user.salary }}</td>
+                    <td>{{ user.remarks }}</td>
+                    <td>
+                        <a href="{{ url_for('employees.edit', emp_id=user.id)}}">✏️</a>
+                        <a href="{{ url_for('employees.confirm_delete', emp_id=user.id)}}">🗑️</a>
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+            
+        </table>
+    {% else %}
+        <p>Employees list Not found.</p>
+    {% endif %}
+{% endblock %}

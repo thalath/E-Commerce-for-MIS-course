@@ -1,0 +1,33 @@
+{% extends 'layouts/base.html' %}
+{% block title %} Employee Card {% endblock %}
+
+{% block content %}
+
+<div class="btn-emp-card">
+    <h3>Employee Info </h3>
+    <a class="create-btn" href="{{ url_for('employees.create') }}">Create new employee</a>
+</div>
+
+{% if emps%}
+<div class="emp-grid">
+    {% for emp in emps %}
+        <div class="card">
+            <div class="emp-card">
+                <img {% if emp.photo %} 
+                       src="{{ url_for('employees.employee_photo', id=emp.id) }}"
+                     {% else %}
+                       src = "{{ url_for('static', filename='images/emp-icon.jpg')}}"
+                     {% endif %}
+                    alt={{ emp.name }} />
+                <h3>{{ emp.name }}</h3>
+                <h4> {{ emp.gender }}</h4>
+                <p> {{ emp.salary}} </p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% else %}
+    <p>There is No Employee yet.</p>
+{% endif %}
+
+{% endblock %}

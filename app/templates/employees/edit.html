@@ -1,0 +1,10 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Editing Personal Info {% endblock %}
+
+{% block content %}
+<form method="POST" novalidate style="margin: 20px"  enctype="multipart/form-data">
+    {% include 'employees/_form.html' %}
+</form>
+
+
+{% endblock %}

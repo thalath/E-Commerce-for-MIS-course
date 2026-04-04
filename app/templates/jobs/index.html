@@ -1,0 +1,28 @@
+{% extends 'layouts/base.html' %}
+{% block title %} Position List {% endblock %}
+
+{% block content %}
+
+{% if jobs %}
+    <table>
+        <thead>
+            <tr>
+                <th> ID </th>
+                <th> Position </th>
+                <th> Minimum Salary </th>
+                <th> Maximum Salary </th>
+            </tr>
+        </thead>
+        {% for job in jobs%}
+            <tbody>
+                <td>{{ job.id }} </td>
+                <td>{{ job.title }} </td>
+                <td>{{ job.min_salary }} </td>
+                <td>{{ job.max_salary }} </td>
+            </tbody>
+        {% endfor %}
+    </table>
+{% else %}
+    <p> There are no any Position have yet..!</p>
+{% endif %}
+{% endblock %}

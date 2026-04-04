@@ -1,0 +1,151 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.container {
+    display: grid;
+    background-color: antiquewhite;
+    grid-template-columns: 220px 1fr;
+    grid-template-rows: 50px 1fr auto;
+    grid-template-areas: 
+    "sidebar header"
+    "sidebar content"
+    "sidebar footer";
+    min-height: 100vh;
+    transition: all 0.3s ease;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: aqua;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    transition: all 0.3s ease;
+}
+
+.navigation li{
+    list-style: none;
+}
+
+
+
+/* Employees Card */
+.btn-emp-card {
+    /* background-color: #1a5edb; */
+    margin: 0px 15px;
+}
+
+.emp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 20px;
+    margin: 0 15px;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.emp-card {
+    text-align: center;
+    padding: 20px;
+}
+
+.emp-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;  
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 3px solid #eee;
+}
+
+.emp-card h3 {
+    margin: 10px 0 5px;
+    font-size: 18px;
+}
+
+.btn-emp-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
+.emp-card h4 {
+    margin: 0;
+    color: #777;
+    font-weight: normal;
+}
+
+.emp-card p {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #2c7be5;
+}
+
+.create-btn {
+    text-decoration: none;
+    padding: 8px 14px;
+    background: #2c7be5;
+    color: white;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.create-btn:hover {
+    background: #1a5edb;
+}
+
+/* Footer */
+footer {
+    grid-area: footer;
+    color: white;
+    background-color: #34450e;
+}
+
+
+div table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #333;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table td,
+table, th{
+    vertical-align: middle;
+}
+
+
+tr img {
+    background-size: cover;
+}

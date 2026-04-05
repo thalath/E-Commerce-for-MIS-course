@@ -2,6 +2,10 @@
 {% block title %}Product List {% endblock %}
 
 {% block content %}
+<div>
+    <h2>Products List</h2>
+    <a href="{{ url_for('products.create') }}">Create New Product</a>
+</div>
 {% if products %}
 <table>
     <thead>

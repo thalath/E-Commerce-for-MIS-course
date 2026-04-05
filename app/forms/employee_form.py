@@ -8,7 +8,6 @@ from app.models.jobs import Jobs
 def _position_choices():
     jobs = db.select(Jobs).order_by(Jobs.title)
     
-    
     return [
         (job.id, job.title)
         for job in db.session.scalars(jobs)

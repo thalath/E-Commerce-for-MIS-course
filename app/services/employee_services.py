@@ -21,8 +21,8 @@ class EmployeeServices:
             name = data['name'],
             gender = data['gender'],
             birthdate=data['birthdate'],
-            job_id = data.get('id'),
-            address = data.get("address", ""),
+            job_id = data.get('job_id'),
+            address = data.get("address", "_"),
             phone = data['phone'],
             salary = data['salary'],
             remarks = data['remarks'],
@@ -43,9 +43,7 @@ class EmployeeServices:
         emp.remarks = data['remarks']
         emp.salary = data['salary']
         emp.job_id = data.get('job_id', None)
-        
-        if file is not None:
-            emp.photo = data.get('photo', file)
+        emp.photo = file
         db.session.commit()
         return emp
         
@@ -54,8 +52,3 @@ class EmployeeServices:
     def delete(emp: Employees) -> None:
         db.session.delete(emp)
         db.session.commit()
-        
-        
-        
-        
-        

@@ -35,12 +35,13 @@ def create():
             "name": form.name.data,
             "gender": form.gender.data,
             "birthdate": form.birthdate.data,
-            "job_title": form.job_id.data,
+            "job_id": form.job_id.data,
             "address": form.address.data,
             "phone": form.phone.data,
             "salary": form.salary.data,
             "remarks": form.remarks.data,
         }
+        
         
         file = request.files.get('photo')
         if file:
@@ -75,7 +76,7 @@ def edit(emp_id: int):
         
         
         image = None
-        photo = request.files['photo']
+        photo = request.files.get('photo')
         if photo:
             image = photo.read()
         

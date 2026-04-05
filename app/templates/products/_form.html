@@ -1,0 +1,118 @@
+{{ form.hidden_tag() }}
+
+<div>
+    {{ form.code.label() }}
+    {{ form.code() }}
+    {% if form.code.errors %}
+        <div class="text-danger small">
+            {% for error in form.code.error %}
+            {{ error }}
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+<div>
+    {{ form.name.label() }}
+    {{ form.name() }}
+    {% if form.name.errors %}
+        <div class="text-danger small">
+            {% for error in form.name.error %}
+            {{ error }}
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+<div>
+    {{ form.category.label() }}
+    {{ form.category() }}
+    {% if form.category.errors %}
+        <div class="text-danger small">
+            {% for error in form.category.error %}
+            {{ error }}
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+<div>
+    {{ form.unit_meansure.label() }}
+    {{ form.unit_meansure() }}
+    {% if form.unit_meansure.errors %}
+        <div class="text-danger small">
+            {% for error in form.unit_meansure.error %}
+            {{ error }}
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+<div>
+    {{ form.reorder_level.label() }}
+    {{ form.reorder_level() }}
+    {% if form.reorder_level.errors %}
+        <div class="text-danger small">
+            {% for error in form.reorder_level.error %}
+            {{ error }}
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+<div>
+    {{ form.sell_price.label() }}
+    {{ form.sell_price() }}
+    {% if form.sell_price.errors %}
+        <div class="text-danger small">
+            {% for error in form.sell_price.error %}
+            {{ error }}
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+<div>
+    {{ form.cost_price.label() }}
+    {{ form.cost_price() }}
+    {% if form.cost_price.errors %}
+        <div class="text-danger small">
+            {% for error in form.cost_price.error %}
+            {{ error }}
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+<div>
+    {{ form.in_stock.label() }}
+    {{ form.in_stock() }}
+    {% if form.in_stock.errors %}
+        <div class="text-danger small">
+            {% for error in form.in_stock.error %}
+            {{ error }}
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+<div>
+    {{ form.images.label() }}
+    {{ form.images() }}
+    {% if form.images.errors %}
+        <div class="text-danger small">
+            {% for error in form.images.error %}
+            {{ error }}
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+
+
+<div>
+    {{ form.submit(class="btn btn-primary") }}
+    <a href="{{ url_for('products.index') }}" class="btn btn-secondary"> Cancel</a>
+</div>
+
+

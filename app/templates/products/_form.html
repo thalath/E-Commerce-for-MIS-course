@@ -88,7 +88,7 @@
 
 <div>
     {{ form.images.label() }}
-    {{ form.images() }}
+    {{ form.images(type="file") }}
     {% if form.images.errors %}
         <div class="text-danger small">
             {% for error in form.images.error %}

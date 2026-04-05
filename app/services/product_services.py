@@ -31,7 +31,7 @@ class ProductServices:
         return product
 
     @staticmethod
-    def update(product: Products, data: dict, image) -> Products:
+    def update(product: Products, data: dict, image_file: str) -> Products:
 
         # product.code = data['code']
         product.name = data['name']
@@ -42,8 +42,10 @@ class ProductServices:
         product.cost_price = data['cost_price']
         product.in_stock = data['in_stock']
 
-        if product.images and product.images != '':
-            product.images = image
+        product.images = image_file
+        
+        if image_file is not None:
+            product.images = data.get('images')
 
         db.session.commit()
         return product

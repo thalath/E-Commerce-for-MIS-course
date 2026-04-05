@@ -15,11 +15,11 @@ def _categories_choice():
 
 class ProductCreateForm(FlaskForm):
     
-    code = StringField(
-        "Product Code",
-        validators=[DataRequired(), Length(min=2, max=30)],
-        render_kw={"placeholder": "Enter Product Code", "class": "form-control"}
-    )
+    # code = StringField(
+    #     "Product Code",
+    #     validators=[DataRequired(), Length(min=2, max=30)],
+    #     render_kw={"placeholder": "Enter Product Code", "class": "form-control"}
+    # )
     
     name = StringField(
         "Product Name",

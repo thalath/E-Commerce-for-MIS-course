@@ -25,7 +25,7 @@
     {% for product in products %}
     <tbody>
         <tr>
-            <td><img src="{{ url_for('products.image', p_code=product.code) }}" width="100" alt="{{ product.name }}" /></td>
+            <td><img src="{{ url_for('products.image', p_code=product.code) }}" width="50" alt="{{ product.name }}" /></td>
             <td>{{ loop.index }}</td>
             <td>{{ product.code }}</td>
             <td>{{ product.name }}</td>

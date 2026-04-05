@@ -1,16 +1,6 @@
 {{ form.hidden_tag() }}
+ 
 
-<div>
-    {{ form.code.label() }}
-    {{ form.code() }}
-    {% if form.code.errors %}
-        <div class="text-danger small">
-            {% for error in form.code.error %}
-            {{ error }}
-            {% endfor %}
-        </div>
-    {% endif %}
-</div>
 
 <div>
     {{ form.name.label() }}

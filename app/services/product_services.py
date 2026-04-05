@@ -15,7 +15,7 @@ class ProductServices:
     @staticmethod
     def create(data: dict, image: str) -> Products:
         product = Products(
-            code = data['code'],
+            # code = data['code'],
             name = data['name'],
             category = data.get('category', None),
             unit_meansure = data['unit_meansure'],
@@ -33,7 +33,7 @@ class ProductServices:
     @staticmethod
     def update(product: Products, data: dict, image) -> Products:
 
-        product.code = data['code']
+        # product.code = data['code']
         product.name = data['name']
         product.category = data.get('category', None)
         product.unit_meansure = data['unit_meansure']

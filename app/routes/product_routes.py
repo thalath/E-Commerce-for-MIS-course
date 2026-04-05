@@ -23,7 +23,7 @@ def create():
     form = ProductCreateForm()
     if form.validate_on_submit():
         data = {
-            "code": form.code.data,
+            # "code": form.code.data,
             "name": form.name.data,
             "category": form.category.data,
             "unit_meansure": form.unit_meansure.data,

@@ -1,0 +1,17 @@
+{% extends'layouts/base.html' %}
+{% block title %} Create Nore Job Position {% endblock %}
+
+{% block content %}
+<div>
+    <div>
+        <h3>Create a New Job's Position </h3>
+    </div>
+
+    <div>
+        <form novalidate method="POST">
+            {% include 'jobs/_form.html' %}
+        </form>
+    </div>
+</div>
+
+{% endblock %}

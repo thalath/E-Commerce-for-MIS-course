@@ -18,7 +18,7 @@ class JobServices:
 
         job = Jobs(
             title = data['title'],
-            min_salaru = data['min_salary'],
+            min_salary = data['min_salary'],
             max_salary = data['max_salary']
         )
         

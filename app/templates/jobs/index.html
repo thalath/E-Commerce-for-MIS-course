@@ -4,6 +4,10 @@
 {% block content %}
 
 {% if jobs %}
+<div>
+    <h2>Job Positions'list </h2>
+    <a href="{{ url_for('jobs.create') }}">Create New Position</a>
+</div>
     <table>
         <thead>
             <tr>
@@ -11,6 +15,7 @@
                 <th> Position </th>
                 <th> Minimum Salary </th>
                 <th> Maximum Salary </th>
+                <th>Actions</th>
             </tr>
         </thead>
         {% for job in jobs%}
@@ -19,6 +24,10 @@
                 <td>{{ job.title }} </td>
                 <td>{{ job.min_salary }} </td>
                 <td>{{ job.max_salary }} </td>
+                <td>
+                    <a href="{{ url_for('jobs.edit', job_id=job.id)}}">✏️</a>
+                    <a href="{{ url_for('jobs.confirm_delete', job_id=job.id) }}">🗑️</a>
+                </td>
             </tbody>
         {% endfor %}
     </table>

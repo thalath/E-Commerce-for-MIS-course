@@ -1,0 +1,29 @@
+{% extends'layouts/base.html' %}
+{% block title %} Confirm Delete {% endblock %}
+
+{% block content %}
+<div>
+    <div>
+        <h2>Confirm Delete: {{ job.title }} </h2>
+        <p>
+            Are your sure, delete the following Job Positions
+        </p>
+    </div>
+
+    <ul>
+        <li><strong>Job ID: </strong>{{ job.id }}</li>
+        <li><strong>Job title: </strong>{{ job.title }}</li>
+        <li><strong>Min Salary: </strong>{{ job.min_salary }}</li>
+        <li><strong>max Salary: </strong>{{ job.max_salary }}</li>
+    </ul>
+
+    <div>
+        <form novalidate method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.submit()}}
+            <a href="{{ url_for('jobs.index') }}">Cancel</a>
+        </form>
+    </div>
+
+</div>
+{% endblock %}

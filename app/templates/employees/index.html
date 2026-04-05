@@ -2,7 +2,13 @@
 {% block title %}Employees List{% endblock %}
 
 {% block content %}
-    {% if users %}
+<div>
+    <div>
+        <h2> Employee List </h2>
+        <a href="{{ url_for('employees.create')}}">Create New Employee Info</a>
+    </div>
+    <div>
+    {% if employees %}
         <table border="1" cellspacing="0" cellpadding="5">
             <thead>
                 <tr>
@@ -19,22 +25,22 @@
                     <th>Active</th>
                 </tr>
             </thead>
-            {% for user in users %}
+            {% for employee in employees %}
             <tbody>
                 <tr>
-                    <td><img src="{{ url_for('employees.employee_photo', id=user.id) }}" alt="{{ user.name }}" width="50"></td>
-                    <td>{{ user.id }}</td>
-                    <td>{{ user.name }}</td>
-                    <td>{{ user.gender }}</td>
-                    <td>{{ user.birthdate }}</td>
-                    <td>{{ user.job_id }}</td>
-                    <td>{{ user.address }}</td>
-                    <td>{{ user.phone }}</td>
-                    <td>{{ user.salary }}</td>
-                    <td>{{ user.remarks }}</td>
+                    <td><img src="{{ url_for('employees.employee_photo', id=employee.id) }}" alt="{{ employee.name }}" width="50"></td>
+                    <td>{{ employee.id }}</td>
+                    <td>{{ employee.name }}</td>
+                    <td>{{ employee.gender }}</td>
+                    <td>{{ employee.birthdate }}</td>
+                    <td>{{ employee.job_id }}</td>
+                    <td>{{ employee.address }}</td>
+                    <td>{{ employee.phone }}</td>
+                    <td>{{ employee.salary }}</td>
+                    <td>{{ employee.remarks }}</td>
                     <td>
-                        <a href="{{ url_for('employees.edit', emp_id=user.id)}}">✏️</a>
-                        <a href="{{ url_for('employees.confirm_delete', emp_id=user.id)}}">🗑️</a>
+                        <a href="{{ url_for('employees.edit', emp_id=employee.id)}}">✏️</a>
+                        <a href="{{ url_for('employees.confirm_delete', emp_id=employee.id)}}">🗑️</a>
                     </td>
                 </tr>
             </tbody>
@@ -44,4 +50,6 @@
     {% else %}
         <p>Employees list Not found.</p>
     {% endif %}
+    </div>
+</div>
 {% endblock %}

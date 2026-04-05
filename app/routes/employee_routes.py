@@ -15,9 +15,9 @@ def employee_photo(id):
 
 @emp_bp.route("/")
 def index():
-    users = EmployeeServices.get_all()
+    employees = EmployeeServices.get_all()
         
-    return render_template("employees/index.html", users=users)
+    return render_template("employees/index.html", employees=employees)
 
 @emp_bp.route("/card")
 def card():

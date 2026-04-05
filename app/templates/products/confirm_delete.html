@@ -1,0 +1,33 @@
+{% extends 'layouts/base.html' %}
+{% block title %} Code: {{ product.code }} {% endblock %}
+
+{% block content %}
+<div>
+    <div>
+        <h2>Confirm Delete </h2>
+        <p>Are you sure delete following Product {{ product.code }} </p>
+    </div>
+    <ul>
+        <li><strong> Product Code: </strong> {{ product.code }} </li>
+
+        <li><strong> Product name: </strong>  {{ product.name }} </li>
+        <li><strong> Product catgory: </strong> {{ product.category }} </li>
+        <li><strong> Product sell Price: </strong> {{ product.sell_price }} </li>
+
+        <li> <strong> Product cost Price: </strong>{{ product.cost_price }} </li>
+        <li><strong> Product Qty in Hand </strong> {{ product.in_stock }} </li>
+    <ul>
+
+
+    <div>
+        <form action="{{ url_for('products.delete', product_code=product.code) }}"  method="POST" >
+            {{ form.hidden_tag() }}
+            {{form.submit() }}
+            <a href="{{ url_for('products.index') }}">Cancel </a>
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -38,7 +38,8 @@
             <td>{{ product.in_stock }}</td>
             <td>
                 
-                <a href="{{ url_for('products.edit', product_code= product.code) }}">✏️</a>
+                <a href="{{ url_for('products.edit', product_code= product.code) }}" title="delete">✏️</a>
+                <a href="{{ url_for('products.confirm_delete', product_code= product.code) }}" title="Delete">🗑️</a>
             </td>
         </tr>
     </tbody>

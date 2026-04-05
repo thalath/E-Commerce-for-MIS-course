@@ -84,7 +84,7 @@ def confirm_delete(product_code: str):
         abort(404)
 
     form = ProductConfirmDeleteForm()
-    return render_template('proucts/confirm_delete.html', form=form, product=product)
+    return render_template('products/confirm_delete.html', form=form, product=product)
 
 @product_bp.route('/delete/<product_code>', methods=["POST"])
 def delete(product_code: str):

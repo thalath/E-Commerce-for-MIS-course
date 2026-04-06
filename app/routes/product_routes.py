@@ -1,6 +1,10 @@
 from flask import Blueprint, render_template, Response, request, flash, redirect, url_for, abort
+from sqlalchemy.exc import IntegrityError
+
 from app.services.product_services import ProductServices
 from app.forms.product_forms import ProductCreateForm, ProductEditForm, ProductConfirmDeleteForm
+
+from extensions import db
 
 product_bp = Blueprint('products', __name__, url_prefix='/products')
 
@@ -70,11 +74,20 @@ def edit(product_code: str):
             file = image_file.read()
             
         
+        try:
+            ProductServices.update(product, data, file)
+            flash(f"Product {product.name} was updated successfuly", "success")
+            return redirect(url_for('products.index'))
+        
+        except IntegrityError as e:
+            db.session.rollback()
+            flash(f"Databse ERROR: {e}")
+            return render_template('products/create.html', form=form, product=product)
 
-        ProductServices.update(product, data, file)
-        flash(f"Product {product.name} was updated successfuly", "success")
-        return redirect(url_for('products.index'))
-    
+        except Exception as e:
+            flash(f'Something wrong with {e}', 'warning')
+            return render_template('products/create.html', form=form, product=product)
+            
     return render_template('products/edit.html', form=form, product=product)
 
 @product_bp.route('/delete/<product_code>', methods=["GET"])

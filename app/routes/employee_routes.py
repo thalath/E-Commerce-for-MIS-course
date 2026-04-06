@@ -1,6 +1,8 @@
 from flask import render_template, url_for, redirect, Blueprint, Response, flash, request, abort
 from app.services.employee_services import EmployeeServices
 from app.forms.employee_form import EmployeeCreateForm, EmployeeEditForm, EmployeeConfirmDeleteForm
+from sqlalchemy.exc import IntegrityError
+from extensions import db
 
 emp_bp = Blueprint("employees", __name__, url_prefix="/employees")
 
@@ -46,10 +48,19 @@ def create():
         file = request.files.get('photo')
         if file:
             photo = file.read()
+        try:
+            emp = EmployeeServices.create(data, photo)
+            flash(f"Employee {emp.name} Created Successfully", "success")
+            return redirect(url_for('employees.card'))
         
-        emp = EmployeeServices.create(data, photo)
-        flash(f"Employee {emp.name} Created Successfully", "success")
-        return redirect(url_for('employees.card'))
+        except IntegrityError as ie:
+            db.session.rollback()
+            flash(f'Database Error: {ie}', 'warning')
+            return render_template('employees/create.html', form=form)
+
+        except Exception as e:
+            flash(f'Something wrong with Logic Code: {e}')
+            return render_template('employees/create.html', form=form)
     
     return render_template("employees/create.html", form=form)
 
@@ -79,10 +90,19 @@ def edit(emp_id: int):
         photo = request.files.get('photo')
         if photo:
             image = photo.read()
-        
-        EmployeeServices.update(emp, data, image)
-        flash(f"Employee {emp} was updated successfully", "success")
-        return redirect(url_for('employees.index'))
+        try:
+            EmployeeServices.update(emp, data, image)
+            flash(f"Employee {emp} was updated successfully", "success")
+            return redirect(url_for('employees.index'))
+            
+        except IntegrityError as e:
+            db.session.rollback()
+            flash(f'Database Error: {e}', 'warning')
+            return render_template('employees/edit.html', form=form, emp=emp)
+
+        except Exception as e:
+            flash(f'Something wrong!', 'warning')
+            return render_template('employees/edit.html', form=form, emp=emp)
     
     return render_template('employees/edit.html', form=form, emp=emp)
 

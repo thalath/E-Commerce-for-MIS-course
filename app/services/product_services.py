@@ -45,7 +45,7 @@ class ProductServices:
         product.images = image_file
         
         if image_file is not None:
-            product.images = data.get('images')
+            product.images = image_file
 
         db.session.commit()
         return product

@@ -85,3 +85,8 @@ a { text-decoration: none; }
     display: inline-block;
     margin-right: 20px;
 }
+
+table td,
+table, th{
+    vertical-align: middle;
+}

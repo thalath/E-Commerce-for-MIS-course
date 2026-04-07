@@ -1,0 +1,11 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Create Customer {% endblock %}
+
+{% block content %}
+
+<h1 class="mb-3">Create New Customer</h1>
+<form method="post", novalidate>
+    {% include 'customers/_form.html' %}
+</form>
+
+{% endblock %}

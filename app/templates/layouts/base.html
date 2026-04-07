@@ -9,15 +9,11 @@
 </head>
 
 <body>
-    <div class="container">
-        <!-- header -->
-        <header class="header">
 
-        </header>
-
-
-        <!-- Aside -->
-        <aside class="sidebar" id="sidebar">
+    <!-- header -->
+    <header class="header">
+        <div class="container header-container">
+            <h1>AS1 LOGO</h1>
             <nav class="navigation">
                 <ul>
                     <li><a href="{{ url_for('employees.index') }}">Employees</a></li>
@@ -26,28 +22,28 @@
                     <li><a href="{{ url_for('products.index')}}">Product List</a></li>
                 </ul>
             </nav>
-        </aside>
-
-        <main class="content">
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    {% for category, message in messages %}
-                        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-                            {{ message }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        </div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-            {% block content %}{% endblock %}
-        </main>
-
-        <!-- Footer -->
-        <footer>
-            <p> Copyright &copy; Thalath, All right. Reserved.</p>
-        </footer>
-    </div>
-
+        </div>
+    </header>
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="container">
+        {% block content %}{% endblock %}
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <p> Copyright &copy; Thalath, All right. Reserved.</p>
+    </footer>
 </body>
 
 </html>

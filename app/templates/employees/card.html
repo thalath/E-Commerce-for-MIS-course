@@ -9,9 +9,10 @@
 </div>
 
 {% if emps%}
-<div class="emp-grid">
+<div class="grid-container">
     {% for emp in emps %}
-        <div class="card">
+        <div class="grid-item">
+            <div class="border-top"></div>
             <div class="emp-card">
                 <img {% if emp.photo %} 
                        src="{{ url_for('employees.employee_photo', id=emp.id) }}"
@@ -19,13 +20,12 @@
                        src = "{{ url_for('static', filename='images/emp-icon.jpg')}}"
                      {% endif %}
                     alt={{ emp.name }} />
-                <h3>{{ emp.name }}</h3>
-                <h4> {{ emp.gender }}</h4>
+                <span>{{ emp.name }}</span>
+                <p class="job"> {{ emp.gender }}<p>
                 <p> {{ emp.salary}} </p>
             </div>
         </div>
     {% endfor %}
-</div>
 {% else %}
     <p>There is No Employee yet.</p>
 {% endif %}

@@ -7,7 +7,7 @@
         <h3 style="color: red">Confirm Delete</h3>
         <p style="margin-top: 1rem">Are you sure that you want to delete the following Employee?</p>
 
-        <ul>
+        <ul class="row"> 
             <li><strong>Employee Name: </strong> {{ emp.name }} </li>
             <li><strong>Employee Position: </strong> {{ emp.job_id }} </li>
             <li><strong>Employee Salary: </strong> {{ emp.salary }} </li>
@@ -16,8 +16,8 @@
 
         <form method="POST" action="{{ url_for('employees.delete', emp_id=emp.id) }}">
             {{ form.hidden_tag() }}
-            {{ form.submit(class="abc")}}
-            <a href="{{ url_for('employees.index') }}">Cancel</a>
+            {{ form.submit(class="btn btn-danger")}}
+            <a href="{{ url_for('employees.index') }}" class="btn btn-secondary">Cancel</a>
         </form>
     </div>
 

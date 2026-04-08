@@ -139,8 +139,10 @@ class ProductEditForm(FlaskForm):
         validators=[
             FileRequired(),
             FileAllowed(['jpg', 'png', 'jpeg'], 'Image only')
-        ]
+        ],
+        render_kw={"class": "form-control mb-3"}
     )
+    
     
     submit = SubmitField('Update')
 

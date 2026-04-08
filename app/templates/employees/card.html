@@ -3,9 +3,9 @@
 
 {% block content %}
 
-<div class="btn-emp-card">
+<div class="d-flex justify-content-between mb-3">
     <h3>Employee Info </h3>
-    <a class="create-btn" href="{{ url_for('employees.create') }}">Create new employee</a>
+    <a href="{{ url_for('employees.create') }}" class="btn btn-primary">Create new employee</a>
 </div>
 
 {% if emps%}

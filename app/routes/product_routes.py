@@ -41,11 +41,20 @@ def create():
         images = None
         if file and file != '':
             images = file.read()
-            
-        product = ProductServices.create(data, images)
 
-        flash(f"Product {product.name} was created successfully", "success")
-        return redirect(url_for('products.index'))
+        try:
+            product = ProductServices.create(data, images)
+            flash(f"Product {product.name} was created successfully", "success")
+            return redirect(url_for('products.index'))
+        except IntegrityError as e:
+            db.session.rollback()
+            flash(f"Database Problem: {e}", "warning")
+            return render_template('products/create.html', form=form)
+        except Exception as e:
+            db.session.rollback()
+            flash(f"Logic Problem: {e}", "warning")
+            return render_template('products/create.html', form=form)
+            
     
     return render_template('products/create.html', form=form)
 

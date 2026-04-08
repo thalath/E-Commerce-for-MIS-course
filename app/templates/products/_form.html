@@ -3,7 +3,7 @@
 
 
 <div>
-    {{ form.name.label() }}
+    {{ form.name.label(class="form-label") }}
     {{ form.name() }}
     {% if form.name.errors %}
         <div class="text-danger small">
@@ -15,7 +15,7 @@
 </div>
 
 <div>
-    {{ form.category.label() }}
+    {{ form.category.label(class="form-label") }}
     {{ form.category() }}
     {% if form.category.errors %}
         <div class="text-danger small">
@@ -27,7 +27,7 @@
 </div>
 
 <div>
-    {{ form.unit_meansure.label() }}
+    {{ form.unit_meansure.label(class="form-label") }}
     {{ form.unit_meansure() }}
     {% if form.unit_meansure.errors %}
         <div class="text-danger small">
@@ -39,7 +39,7 @@
 </div>
 
 <div>
-    {{ form.reorder_level.label() }}
+    {{ form.reorder_level.label(class="form-label") }}
     {{ form.reorder_level() }}
     {% if form.reorder_level.errors %}
         <div class="text-danger small">
@@ -51,7 +51,7 @@
 </div>
 
 <div>
-    {{ form.sell_price.label() }}
+    {{ form.sell_price.label(class="form-label") }}
     {{ form.sell_price() }}
     {% if form.sell_price.errors %}
         <div class="text-danger small">
@@ -63,7 +63,7 @@
 </div>
 
 <div>
-    {{ form.cost_price.label() }}
+    {{ form.cost_price.label(class="form-label") }}
     {{ form.cost_price() }}
     {% if form.cost_price.errors %}
         <div class="text-danger small">
@@ -75,7 +75,7 @@
 </div>
 
 <div>
-    {{ form.in_stock.label() }}
+    {{ form.in_stock.label(class="form-label") }}
     {{ form.in_stock() }}
     {% if form.in_stock.errors %}
         <div class="text-danger small">
@@ -87,7 +87,7 @@
 </div>
 
 <div>
-    {{ form.images.label() }}
+    {{ form.images.label(class="form-label") }}
     {{ form.images(type="file") }}
     {% if form.images.errors %}
         <div class="text-danger small">

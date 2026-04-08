@@ -4,6 +4,8 @@ from sqlalchemy.exc import IntegrityError
 from app.services.customer_services import CustomerServices
 from app.forms.customer_forms import CustomerCreateForm
 
+from extensions import db
+
 
 customer_bp = Blueprint('customers', __name__, url_prefix=('/customers'))
 
@@ -31,6 +33,7 @@ def create():
             flash(f"Customer {customer.name} create Successfully", "success")
             return redirect(url_for('customers.index'))
         except IntegrityError as e:
+            db.session.rollback()
             flash(f"Database ERROR: {e}")
             return render_template('customers/create.html', form=form)
         except Exception as e:

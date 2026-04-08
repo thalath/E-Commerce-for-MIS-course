@@ -1,7 +1,7 @@
 from extensions import db
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-from sqlalchemy import Identity
+from app.models.associations import customer_invoice
 
 class Customers(db.Model):
     __tablename__ = 'customers'
@@ -12,6 +12,9 @@ class Customers(db.Model):
     password_hash = db.Column(db.String(255), nullable=False)
     phone_number = db.Column(db.String(20), unique=True, nullable=False)
     discount = db.Column(db.Float)
+    
+    
+    invoice_id = db.relationship('Invoices', secondary=customer_invoice, back_populates='customer_id')
     
     
     def set_password(self, password: str) -> None:

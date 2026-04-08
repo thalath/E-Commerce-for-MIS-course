@@ -3,14 +3,15 @@
 
 {% block content %}
 <div>
-    <div>
+    <div class="d-flex justify-content-between align-items-center m-3">
         <h2> Employee List </h2>
-        <a href="{{ url_for('employees.create')}}">Create New Employee Info</a>
+        <a href="{{ url_for('employees.create')}}" class="btn btn-primary">Create New Employee Info</a>
     </div>
     <div>
     {% if employees %}
-        <table border="1" cellspacing="0" cellpadding="5">
-            <thead>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered align-middle shadow-sm">
+            <thead class="table-light">
                 <tr>
                     <th>PHOTO</th>
                     <th>Employee ID</th>
@@ -22,7 +23,7 @@
                     <th>Telephone</th>
                     <th>Salary</th>
                     <th>Remarks</th>
-                    <th>Active</th>
+                    <th class="text-end">Active</th>
                 </tr>
             </thead>
             {% for employee in employees %}
@@ -38,9 +39,9 @@
                     <td>{{ employee.phone }}</td>
                     <td>{{ employee.salary }}</td>
                     <td>{{ employee.remarks }}</td>
-                    <td>
-                        <a href="{{ url_for('employees.edit', emp_id=employee.id)}}">✏️</a>
-                        <a href="{{ url_for('employees.confirm_delete', emp_id=employee.id)}}">🗑️</a>
+                    <td class="text-end">
+                        <a href="{{ url_for('employees.edit', emp_id=employee.id)}}" class="btn btn-warning">✏️</a>
+                        <a href="{{ url_for('employees.confirm_delete', emp_id=employee.id)}}" class="btn btn-danger">🗑️</a>
                     </td>
                 </tr>
             </tbody>

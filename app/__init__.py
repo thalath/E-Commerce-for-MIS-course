@@ -17,11 +17,13 @@ def create_app(config_class: type[Config] = Config):
     from app.routes.job_routes import job_bp
     from app.routes.product_routes import product_bp
     from app.routes.customer_routes import customer_bp
+    from app.routes.invoice_routes import invoice_bp
     
     app.register_blueprint(emp_bp)
     app.register_blueprint(job_bp)
     app.register_blueprint(product_bp)
     app.register_blueprint(customer_bp)
+    app.register_blueprint(invoice_bp)
     
     @app.route("/")
     def home():
@@ -33,6 +35,7 @@ def create_app(config_class: type[Config] = Config):
         from app.models.categories import Categories
         from app.models.products import Products
         from app.models.customers import Customers
+        from app.models.invoices import Invoices
         db.create_all()
 
     return app

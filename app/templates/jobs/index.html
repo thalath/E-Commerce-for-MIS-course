@@ -4,33 +4,35 @@
 {% block content %}
 
 {% if jobs %}
-<div>
-    <h2>Job Positions'list </h2>
-    <a href="{{ url_for('jobs.create') }}">Create New Position</a>
-</div>
-    <table>
-        <thead>
-            <tr>
-                <th> ID </th>
-                <th> Position </th>
-                <th> Minimum Salary </th>
-                <th> Maximum Salary </th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        {% for job in jobs%}
-            <tbody>
-                <td>{{ job.id }} </td>
-                <td>{{ job.title }} </td>
-                <td>{{ job.min_salary }} </td>
-                <td>{{ job.max_salary }} </td>
-                <td>
-                    <a href="{{ url_for('jobs.edit', job_id=job.id)}}">✏️</a>
-                    <a href="{{ url_for('jobs.confirm_delete', job_id=job.id) }}">🗑️</a>
-                </td>
-            </tbody>
-        {% endfor %}
-    </table>
+    <div class="d-flex justify-content-between mb-3">
+        <h2>Job Positions'list </h2>
+        <a href="{{ url_for('jobs.create') }}" class="btn btn-primary">Create New Position</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered align-middle shadow-sm">
+            <thead class="table-light">
+                <tr>
+                    <th> ID </th>
+                    <th> Position </th>
+                    <th> Minimum Salary </th>
+                    <th> Maximum Salary </th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            {% for job in jobs%}
+                <tbody>
+                    <td>{{ job.id }} </td>
+                    <td>{{ job.title }} </td>
+                    <td>{{ job.min_salary }} </td>
+                    <td>{{ job.max_salary }} </td>
+                    <td>
+                        <a href="{{ url_for('jobs.edit', job_id=job.id)}}">✏️</a>
+                        <a href="{{ url_for('jobs.confirm_delete', job_id=job.id) }}">🗑️</a>
+                    </td>
+                </tbody>
+            {% endfor %}
+        </table>
+    </div>
 {% else %}
     <p> There are no any Position have yet..!</p>
 {% endif %}

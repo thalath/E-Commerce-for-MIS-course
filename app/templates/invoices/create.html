@@ -1,0 +1,10 @@
+{% extends 'layouts/base.html' %}
+{% block title %} Invoice {% endblock %}
+
+{% block content %}
+<h2 class="mb-3"> Create New Invoice </h2>
+<form method="post" novalidate>
+    {% include 'invoices/_form.html' %}
+</form>
+
+{% endblock %}

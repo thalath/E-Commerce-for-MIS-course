@@ -22,8 +22,8 @@
     <div>
         <form action="{{ url_for('products.delete', product_code=product.code) }}"  method="POST" >
             {{ form.hidden_tag() }}
-            {{form.submit() }}
-            <a href="{{ url_for('products.index') }}">Cancel </a>
+            {{form.submit(class="btn btn-danger") }}
+            <a href="{{ url_for('products.index') }}" class="btn btn-secondary">Cancel </a>
         </form>
 
     </div>

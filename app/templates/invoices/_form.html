@@ -1,0 +1,36 @@
+{{ form.hidden_tag() }}
+
+<div class="mb-3">
+    {{ form.customer_id.label(class="form-label") }}
+    {{ form.customer_id() }}
+    {% if form.customer_id.errors %}
+        {% for error in form.customer_id.errors %}
+            <div class="text-danger small"> {{ error }}</div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+<div class="mb-3">
+    {{ form.employee_id.label(class="form-label") }}
+    {{ form.employee_id() }}
+    {% if form.employee_id.errors %}
+        {% for error in form.employee_id.errors %}
+            <div class="text-danger small"> {{ error }}</div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+<div class="mb-3">
+    {{ form.inv_status.label(class="form-label") }}
+    {{ form.inv_status() }}
+    {% if form.inv_status.errors %}
+        {% for error in form.inv_status.errors %}
+            <div class="text-danger small"> {{ error }}</div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+<div class="mb-3">
+    {{ form.submit(class="btn btn-primary") }}
+    <a class="btn btn-secondary" href="{{ url_for('invoices.index') }}">Cancel</a>
+</div>

@@ -1,8 +1,9 @@
 from extensions import db
+from app.models.associations import employee_invoice
 
 
 class Employees(db.Model):
-    __tablename__ = "EMPLOYEES"
+    __tablename__ = "employees"
     
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
@@ -14,6 +15,9 @@ class Employees(db.Model):
     salary = db.Column(db.Integer)
     remarks = db.Column(db.String(20))
     photo = db.Column(db.LargeBinary)
+    
+    invoice_id = db.relationship('Invoices', secondary=employee_invoice, back_populates='employee_id')
+    
     
     def __repr__(self) -> str:
         return f"<{self.name}>"
